@@ -42,8 +42,7 @@ void merge(int *arr, int left, int middle, int right)
 	while(j<n2)
 	{
 		arr[k++] = R[j++];
-	}
-	
+	}	
 }
 
 void mergesort(int *arr, int left, int right)

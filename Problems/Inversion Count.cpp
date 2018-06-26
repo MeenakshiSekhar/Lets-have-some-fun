@@ -34,8 +34,8 @@ int merge(int *arr, int low, int mid, int high)
 		else
 		{
 			arr[k++] = n2[j++];
+			inv_count += mid - i;
 		}
-		inv_count += mid - i;
 	}
 	
 	while(i<size1)

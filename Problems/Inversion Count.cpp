@@ -46,6 +46,7 @@ int merge(int *arr, int low, int mid, int high)
 	{
 		arr[k++] = n2[j++];
 	}
+	return inv_count;
 }
 
 int mergesort(int *arr, int low, int high)

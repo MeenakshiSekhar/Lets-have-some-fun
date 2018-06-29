@@ -33,29 +33,27 @@ void insert(struct node **head, int data)
 void detectnremoveloop(struct node *head)
 {
 	struct node *slowptr = head;
-	struct node *fastptr = head->next;
+	struct node *fastptr = head;
 	
-	while(slowptr != fastptr)
+	while(fastptr->next != NULL)
 	{
 		slowptr = slowptr->next;
 		fastptr = fastptr->next->next;
-	} 
-
-    if(fastptr->next == head)
-    {
-    	cout<<"Its a circular linked list"<<endl;
-    }
+		if(slowptr == fastptr)
+		{
+			break;
+		}
+	}
+	//remove loop
 	slowptr = head;
-	struct node *prev = NULL;
-	while(slowptr != fastptr)
+	while(slowptr->next != fastptr->next)
 	{
 		slowptr = slowptr->next;
-		prev = fastptr->next;
-		fastptr = fastptr->next->next;
+		fastptr = fastptr->next;
 	}
 	cout<<"Loop starts at "<<fastptr->data<<endl;
 	cout<<"Unlinking loop"<<endl;
-	prev->next = NULL;
+	fastptr->next = NULL;
 	print(head);
 }
 
@@ -66,7 +64,7 @@ void createloop(struct node *head)
 	{
 		temp = temp->next;
 	}
-	temp->next = head->next;
+	temp->next = head->next->next->next;
 }
 
 void print(struct node *node)
@@ -88,6 +86,10 @@ int main()
 	insert(&head, 10);
 	insert(&head, 25);
 	insert(&head, 50);
+	insert(&head, 150);
+	insert(&head, 510);
+	insert(&head, 5011);
+	
 	
 	createloop(head);
 	detectnremoveloop(head);

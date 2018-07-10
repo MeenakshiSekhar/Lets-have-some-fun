@@ -4,7 +4,7 @@ using namespace std;
 
 long long countPermutation(char *str, long long size)
 {
-	long long dp[size+1] = {0};
+	long long dp[size] = {0};
 	dp[0] = 1;
 	for(long long i=1; i<size; i++)
 	{

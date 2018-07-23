@@ -30,55 +30,27 @@ Pair (5, 8) exists in first array whose sum 13 is present in second array.
 */
 
 **************************************************************************************************************************
-
-#include <iostream>
-#include<algorithm>
-#define ll long long 
+#include <bits/stdc++.h>
+#define ll long long
 using namespace std;
 
-int subsetSum(ll *arr, ll n, ll *sum, ll k)
+int findPair(ll *arr, ll n, ll *sum, ll k)
 {
-    ll size = sum[k-1];
-    //cout<<sum[k-1]<<endl;
-    ll dp[n+1][size+1];
-    for(ll i=0; i<=n; i++)
+    map<ll, ll> m;
+    
+    for(ll i=0; i<n; i++)
     {
-        for(ll j=0; j<=size; j++)
-        {
-            if(j == 0 || i==0)
-            {
-                dp[i][j] = 0;
-            }
-            else
-            {
-                if(arr[i-1]>j)
-                {
-                    dp[i][j] = dp[i-1][j];
-                }
-                else
-                {
-                    if(arr[i-1]==j)
-                    {
-                        dp[i][j] = 1;
-                    }
-                    else
-                    {
-                        dp[i][j] = (dp[i-1][j] || dp[i-1][j-arr[i-1]]);
-                    }
-                }
-            }
-        }
+        m[arr[i]] = 1;
     }
-    for(ll j=0; j<=n; j++)
+    
+    for(ll i=0; i<k; i++)
     {
-    	for(ll i=0; i<k; i++)
-    	{
-    		
-    		if(dp[j][sum[i]]==1)
-    		{
-    			return 1;
-    		}
-    	}
+        ll s = sum[i];
+        for(ll j=0; j<n; j++)
+        {
+            if(m[s-arr[j]] && (s-arr[j]!=arr[j]))
+                return 1;
+        }
     }
     return 0;
 }
@@ -88,30 +60,20 @@ int main() {
 	cin>>t;
 	while(t--)
 	{
-	    ll n;
+	    ll n, k;
 	    cin>>n;
 	    ll arr[n];
 	    for(ll i=0; i<n; i++)
 	    {
 	        cin>>arr[i];
 	    }
-	    ll k;
 	    cin>>k;
 	    ll sum[k];
 	    for(ll i=0; i<k; i++)
 	    {
 	        cin>>sum[i];
 	    }
-	    sort(arr, arr+n);
-	    sort(sum, sum+k);
-	    for(ll i=n-1; i>=0; i--)
-	    {
-	        if(arr[i]>sum[k-1])
-	            n--;
-	        else 
-	            break;
-	    }
-	    cout<<subsetSum(arr, n, sum ,k);
+	    cout<<findPair(arr, n, sum, k)<<endl;
 	}
 	return 0;
 }

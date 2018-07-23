@@ -33,24 +33,40 @@ Explanation :
 In the 1st sample, Cost of picking maximum cities = {2 + (1 * 2) } + {3 + (2 * 2)} = 4 + 7 = 11 (which is within Budget).
 */
 
-/*---------------------------------------------WROGN ANSWER------------------------------------------------*/
-
-
 #include <iostream>
 #include<string.h>
-#define ll long long 
+#define ll long long
 using namespace std;
+
+int compare( const void *aa, const void  *bb)
+{
+    ll *a=(ll *)aa;
+    ll *b=(ll *)bb;
+    if (a[1]<b[1])
+     return -1;
+    else if (a[1]==b[1]) 
+    return 0;
+    else  
+     return 1;
+}
 
 void knapsack(ll *arr, ll n, ll budget)
 {
     ll dp[n+1];
     memset(dp,0,sizeof(dp));
     ll j;
+    ll a[n][2];
+    for(ll i=0; i<n; i++)
+    {
+    	a[i][0] = arr[i];
+    	a[i][1] = arr[i]*(i+1);
+    }
+    qsort(a, n, sizeof(a[0]), compare);
     for(j=1; j<=n; j++)
     {
            	for(ll k=1; k<=j; k++)
            	{
-           		dp[j] += (arr[k-1]+(j*k));
+           		dp[j] += (a[k-1][0]+(j*(a[k-1][1]/a[k-1][0])));
            	}
            	if(dp[j]>budget)
            	{
@@ -62,7 +78,8 @@ void knapsack(ll *arr, ll n, ll budget)
 }
 
 
-int main() {
+int main() 
+{
 	int t;
 	cin>>t;
 	while(t--)

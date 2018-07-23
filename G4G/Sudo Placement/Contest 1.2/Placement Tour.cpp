@@ -1,8 +1,12 @@
 /*
 
-Given an array A of N positive integers and a budget B. Your task is to decide the maximum number of elements to be picked from the array such that the cumulative cost of all picked elements is less than or equal to budget B. Cost of picking the ith element is given by : A[i] + (i * K) where, K is a constant whose value is equal to the number of elements picked. The indexing(i) is 1 based.
+Given an array A of N positive integers and a budget B. Your task is to decide the maximum number of elements 
+to be picked from the array such that the cumulative cost of all picked elements is less than or equal to budget B. 
+Cost of picking the ith element is given by : A[i] + (i * K) where, K is a constant whose value is equal to the
+number of elements picked. The indexing(i) is 1 based.
 
-Input : First line of input contains number of testcases T. For each testcase, there will be two lines. First line contains size of array A and budget B. Next line contains the array elements.
+Input : First line of input contains number of testcases T. For each testcase, there will be two lines. 
+First line contains size of array A and budget B. Next line contains the array elements.
 
 Output : For each testcase, output two integers, the number of elements picked and cumulative cost.
 

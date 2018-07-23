@@ -30,7 +30,7 @@ Pair (5, 8) exists in first array whose sum 13 is present in second array.
 */
 
 **************************************************************************************************************************
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define ll long long
 using namespace std;
 
@@ -40,7 +40,7 @@ int findPair(ll *arr, ll n, ll *sum, ll k)
     
     for(ll i=0; i<n; i++)
     {
-        m[arr[i]] = 1;
+        m[arr[i]]++;
     }
     
     for(ll i=0; i<k; i++)
@@ -48,7 +48,7 @@ int findPair(ll *arr, ll n, ll *sum, ll k)
         ll s = sum[i];
         for(ll j=0; j<n; j++)
         {
-            if(m[s-arr[j]] && (s-arr[j]!=arr[j]))
+            if(m[s-arr[j]] && ((s-arr[j]==arr[j] && m[arr[j]]>1) ||(s-arr[j]!=arr[j])))
                 return 1;
         }
     }
@@ -72,6 +72,15 @@ int main() {
 	    for(ll i=0; i<k; i++)
 	    {
 	        cin>>sum[i];
+	    }
+	    sort(arr, arr+n);
+	    sort(sum, sum+k);
+	    for(ll i=n-1; i>=0; i--)
+	    {
+	        if(arr[i]>sum[k-1])
+	            n--;
+	        else
+	            break;
 	    }
 	    cout<<findPair(arr, n, sum, k)<<endl;
 	}

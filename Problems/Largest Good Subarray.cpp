@@ -55,7 +55,7 @@ Example case 2: One of the largest good subarrays is (6,3,4,7,3,5,5)
 */
 
 
-
+/*****************************************************My original answer**************************************************/
 
 
 #include <iostream>
@@ -93,6 +93,68 @@ int main() {
 			cin>>arr[i];
 		}
 		cout<<goodArray(arr, n)<<endl;
+	}
+	return 0;
+}
+
+/*********************************************WORKING CODE***********************************************************/
+
+#include<iostream>
+#include<stack>
+#include<climits>
+#define ll long long
+using namespace std;
+
+ll subarray(ll *arr, ll n)
+{
+	stack<ll> s;
+	ll min = INT_MAX;
+	s.push(-1);
+	for(ll i=n-1; i>=0; i--)
+	{
+		if(arr[i]<min)
+		{
+			s.push(i);
+			min = arr[i];
+		}
+	}
+	ll maxCount = 0;
+	ll j = s.top();
+	s.pop();
+	for(ll i=0; i<n; i++)
+	{
+		while( j!=-1 && (arr[i]>arr[j] || j<=i) )
+		{
+			if(j-i+1 >maxCount)
+			{
+				maxCount = j-i+1;
+			}
+			
+			j = s.top();
+			s.pop();
+		}
+		if(j == -1)
+		{
+			return maxCount;
+		}
+	}
+}
+
+
+int main()
+{
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll n;
+		cin>>n;
+		ll arr[n];
+		for(ll i=0; i<n; i++)
+		{
+			cin>>arr[i];
+		}
+		cout<<subarray(arr, n)<<endl;
 	}
 	return 0;
 }

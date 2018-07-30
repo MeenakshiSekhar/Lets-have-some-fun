@@ -158,3 +158,5 @@ int main()
 	}
 	return 0;
 }
+
+worst case:O((2)n)

@@ -30,19 +30,20 @@ The maximum cost path is: (3, 3) -> (3, 2) -> (2, 2) -> (1, 1) -> (0, 0).
 Cost pathwise is: 1 + 1 + 9 + 5 = 16.
 */
 *********************************************************************************************************************
-
 #include <bits/stdc++.h>
+#define ll long long
+
 using namespace std;
 
 //static int n
-int power(long num)
+int power(int num)
 {
     if (ceil(log2(num)) == floor(log2(num)))
         return 1;
     return 0;
 }
 
-long compute_max(long* arr[], const int& n, const int& m)
+int compute_max(int (*arr)[1000], int n)
 {
     int max_cost = 0;
     int i,j;
@@ -50,28 +51,37 @@ long compute_max(long* arr[], const int& n, const int& m)
     {
         for(j=n-1; j>=0; )
         {
+        	if(i==0 && j==0)
+        	{
+        		return max_cost;
+        	}
             if(power(i+j))
             {
+            
+                cout<<arr[i][j]<<endl;
+                max_cost += arr[i][j];
                 i--;
                 j--;
-                max_cost += arr[i][j];
             }
             else
             {
                 if(max(arr[i-1][j], arr[i][j-1]) == arr[i][j-1])
                 {
+                    
+                    cout<<arr[i][j]<<endl;
+                    max_cost += arr[i][j];
                     j--;
-                    max_cost += arr[i][j-1];
                 }
                 else
                 {
+                    
+                    cout<<arr[i][j]<<endl;
+                    max_cost += arr[i][j];
                     i--;
-                    max_cost += arr[i-1][j];
                 }
             }
         }
     }
-    return max_cost;
 }
 
 int main() {
@@ -81,7 +91,7 @@ int main() {
     {
         int n;
         cin>>n;
-        long arr[n][n];
+        int arr[1000][1000];
         for(int i=0; i<n; i++)
         {
             for(int j=0; j<n; j++)
@@ -89,7 +99,7 @@ int main() {
                 cin>>arr[i][j];
             }
         }
-        cout<<compute_max((arr),n, n)<<endl;
+        cout<<compute_max(arr, n)<<endl;
     }
 	return 0;
 }

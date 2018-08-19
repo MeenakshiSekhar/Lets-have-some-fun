@@ -98,4 +98,50 @@ int main() {
 	return 0;
 }
 
-***************************************************************************************************************************
+********************************************************WORKING CODE****************************************************
+
+#include <iostream>
+#include<math.h>
+#define ll long long
+using namespace std;
+
+void completeString(string s, ll i, ll len, string *arr, ll combi)
+{
+    while(s[i]!='?' && i<len)
+    {
+    	i++;
+    }
+    if(i == len)
+    {
+    	cout<<s<<" ";
+    }
+    if(s[i] == '?')
+    {
+        s[i] = '0';
+        completeString(s,i+1, len, arr, combi);
+        s[i] = '1';
+        completeString(s, i+1, len, arr, combi);
+    }
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    string s;
+	    cin>>s;
+	    int len = s.length();
+	    int count = 0;
+	    for(ll i=0; i<len; i++)
+	    {
+	    	if(s[i] == '?')
+	    		count++;
+	    }
+	    ll combi = pow(2, count);
+	    string arr[combi];
+	    completeString(s, 0, len, arr, combi);
+	    cout<<endl;
+	}
+	return 0;
+}

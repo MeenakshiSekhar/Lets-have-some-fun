@@ -52,7 +52,6 @@ ll minId(ll *arr, ll n, ll m)
     {
         mp[arr[i]]++;
     }
-    ll k = 1;
     vector<pair<ll, ll>> vmap(mp.begin(), mp.end());
     sort(vmap.begin(), vmap.end(), cmp);
     ll count = 0;
@@ -74,11 +73,6 @@ ll minId(ll *arr, ll n, ll m)
 	else
 	{
 		count++;
-		if(m<0)
-		{
-			count++;
-			m = 0;
-		}
 	}
     }
     return count;

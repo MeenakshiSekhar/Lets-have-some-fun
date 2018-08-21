@@ -30,6 +30,8 @@ fund
 
 *****************************************************************************************************************
 
+Array count
+
 #include <iostream>
 #include<algorithm>
 #include<vector>
@@ -73,6 +75,56 @@ int main() {
 	        cin>>s[i];
 	    }
 	    cout<<maxFreq(s,n)<<endl;
+	}
+	return 0;
+}
+*********************************************************************************************************************************
+Election Winner
+
+#include <iostream>
+#include<algorithm>
+#include<vector>
+#include<map>
+using namespace std;
+
+bool compare(const pair<string, int> &v1, const pair<string, int> &v2)
+{
+    return (v1.second > v2.second); 
+}
+bool compareStr(const pair<string, int> &v1, const pair<string, int> &v2)
+{
+    if(v1.second == v2.second)
+	      return v1.first<v2.first; 
+	  return v1.second>v2.second;
+}
+
+void electionWinner(string s[1000], int n)
+{
+    map<string, int> mp;
+    for(int i=0; i<n; i++)
+    {
+        mp[s[i]] += 1;
+    }
+    vector<pair<string, int>> vmap(mp.begin(), mp.end());
+    sort(vmap.begin(), vmap.end(), compare);
+    sort(vmap.begin(), vmap.end(), compareStr);
+    cout<<vmap[0].first<<" "<<vmap[0].second<<endl;
+    return;
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    string s[n];
+	    for(int i=0; i<n; i++)
+	    {
+	        cin>>s[i];
+	    }
+	    electionWinner(s,n);
 	}
 	return 0;
 }

@@ -40,13 +40,15 @@ Testcase 2 : In the given dictionary, WelcomeToGeeksForGeeks is the word having 
 uppercase letters right from start.
 
 **********************************************************************************************************************
-
 #include <iostream>
+#include<algorithm>
 #include<cstring>
 using namespace std;
 
-string camelCase(string *arr, int n, string acro)
+void camelCase(string *arr, int n, string acro)
 {
+	string str[n];
+	int x = 0;
     for(int i=0; i<n; i++)
     {
         int k = 0;
@@ -59,12 +61,24 @@ string camelCase(string *arr, int n, string acro)
                 k++;
                 if(k == acro.length())
                 {
-                    return s;
+                    str[x++] = s;
+                    break;
                 }
             }
         }
     }
-    return "No match found";
+    if(x==0)
+    {
+    	cout<<"No match found"<<endl;
+    	return;
+    }
+    sort(str, str+x);
+    for(int i=0; i<x; i++)
+    {
+    	cout<<str[i]<<" ";
+    }
+    cout<<endl;
+    return;
 }
 
 int main() {
@@ -81,7 +95,7 @@ int main() {
 	    }
 	    string acro;
 	    cin>>acro;
-	    cout<<camelCase(arr, n, acro)<<endl;
+	    camelCase(arr, n, acro);
 	}
 	return 0;
 }

@@ -40,6 +40,7 @@ Testcase 2 : In the given dictionary, WelcomeToGeeksForGeeks is the word having 
 uppercase letters right from start.
 
 **********************************************************************************************************************
+
 #include <iostream>
 #include<algorithm>
 #include<cstring>
@@ -56,7 +57,7 @@ void camelCase(string *arr, int n, string acro)
         string s = arr[i];
         for(int j=0; j<len; j++)
         {
-            if((!acro.empty()) && (isupper(s[j]) && s[j] == acro[k]) )
+            if(isupper(s[j]) && s[j] == acro[k])
             {
                 k++;
                 if(k == acro.length())
@@ -64,6 +65,10 @@ void camelCase(string *arr, int n, string acro)
                     str[x++] = s;
                     break;
                 }
+            }
+            else if(isupper(s[j]) && s[j] != acro[k])
+            {
+            	break;
             }
         }
     }

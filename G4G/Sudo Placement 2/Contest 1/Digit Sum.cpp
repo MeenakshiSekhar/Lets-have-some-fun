@@ -4,12 +4,9 @@ is equal to the sum of all remaining digits.
 Input:
 First line of input contains number of testcases T. For each testcase, there will be a single line 
 containing a positive integer N.
-
 Output:
 For each testcase, print "YES" or "NO" (without quotes).
-
 Task: Your task is to complete the function given in the text area. No need to worry about input and output.
-
 Constraints:
 1 <= T < 100
 1 <= N <= 106

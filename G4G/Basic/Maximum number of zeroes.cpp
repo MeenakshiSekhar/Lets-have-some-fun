@@ -1,10 +1,7 @@
 Given an array of n values. Print a number which had maximum number of zeroes. If their are no zeroes then print -1.
-
 Note: If there are multiple numbers with same (max) number of zeroes then print the Maximum number among them.
-
 Input:
 The first line of input contains an integer T denoting the number of test cases. The first line of each test case consists of an integer n. The next line consists of n spaced integers.
-
 Output:
 Print the number with maximum number of zeroes.
 

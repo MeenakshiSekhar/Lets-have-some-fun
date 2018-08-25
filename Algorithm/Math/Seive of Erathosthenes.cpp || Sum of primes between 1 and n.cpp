@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string.h>
 #define ll long long
+
 using namespace std;
 
 ll primes(ll n)

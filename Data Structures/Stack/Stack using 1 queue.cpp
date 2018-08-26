@@ -1,12 +1,10 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 
 class Stack
 {
 	queue<int> q;
 	int size;
-	
 	public:
 	Stack()
 	{
@@ -46,11 +44,8 @@ int main()
 	s.push(3);
 	s.push(4);
 	s.push(5);
-	
 	cout<<s.pop()<<endl;
 	cout<<s.pop()<<endl;
 	cout<<s.pop()<<endl;
-	
 	return 0;
-	
 }

@@ -2,12 +2,10 @@
 Given a number N, count the numbers from 1 to N which comprise of digits, only in set 1, 2, 3, 4 and 5. 
 
 Input:
-
 The first line of input contains an integer T denoting the number of test cases.Then T test cases follow. 
 Each test case consist of one line. Each line of each test case is N, where N is the range from 1 to N.
 
 Output:
-
 Print the count of numbers in the given range from 1 to N.
 
 Constraints:

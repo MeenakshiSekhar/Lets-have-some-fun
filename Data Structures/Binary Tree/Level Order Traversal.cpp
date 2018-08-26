@@ -64,7 +64,6 @@ int main()
 	root->left->right = newnode(33);
 	root->right->left = newnode(45);
 	root->right->right = newnode(25);
-	
 	levelordertraversal(root);
 	return 0;		
 }

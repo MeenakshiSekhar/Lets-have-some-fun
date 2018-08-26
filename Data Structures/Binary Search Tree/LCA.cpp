@@ -65,7 +65,7 @@ struct node *lca(struct node *root, int n1, int n2)
 
 int main()
 {
-	struct node *root        = newNode(20);
+    struct node *root        = newNode(20);
     root->left               = newNode(8);
     root->right              = newNode(22);
     root->left->left         = newNode(4);
@@ -77,11 +77,10 @@ int main()
     if(result != NULL)
     {
     	cout<<result->data<<endl;
-	}
-	else
-	{
-		cout<<"Key not found"<<endl;
-	}
-    
+    }
+    else
+    {
+	cout<<"Key not found"<<endl;
+    }
     return 0;
 }

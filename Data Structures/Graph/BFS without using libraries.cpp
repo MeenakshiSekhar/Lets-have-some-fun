@@ -9,7 +9,7 @@ struct queue
 
 struct queue* createQueue(int n)
 {
-	cout<<"create q"<<endl;
+//	cout<<"create q"<<endl;
     struct queue *q = new queue();
     q->front = q->size = 0;
     q->rear = n - 1;
@@ -41,7 +41,7 @@ void push(struct queue *q, int data)
 
 void pop(struct queue *q)
 {
-    if(!isEmpty)
+    if(!isEmpty(q))
     {
         q->front = (q->front+1)%q->capacity;
         q->size = q->size-1;
@@ -50,16 +50,16 @@ void pop(struct queue *q)
 
 int front(struct queue *q)
 {
-    if(!isEmpty)
+    if(!isEmpty(q))
     {
         return q->arr[q->front];
     }
     return -1;
 }
 
-void BFS(int (*graph)[100000], int n, struct queue* q)
+void BFS(int (*graph)[100], int n, struct queue* q)
 {
-    cout<<"hi";
+    //cout<<"hi";
     bool visited[n];
     for(int i=0; i<n; i++)
     {
@@ -68,31 +68,28 @@ void BFS(int (*graph)[100000], int n, struct queue* q)
     
     visited[2] = true;
     push(q, 2);
-    cout<<"check"<<endl;
     while(!isEmpty(q))
     {
-        cout<<front(q)<<" ";
+    	int index = front(q);
+        cout<<index<<" ";
         pop(q);
-        for(int i=0; i<n; i++)
-        {
-            for(int j=0; j<n; j++)
+        for(int j=0; j<n; j++)
             {
-                if(graph[i][j] == 1 && !visited[j])
+                if(graph[index][j] == 1 && !visited[j])
                 {
                     visited[j] = true;
                     push(q, j);
                 }
             }
-        }
     }
     
 }
 
 int main() {
     struct queue *q = createQueue(1000);
-    
+    //cout<<"here"<<endl;
 	int n = 4;
-	int graph[100000][100000];
+	int graph[100][100];
 	for(int i=0; i<n; i++)
 	{
 	    for(int j=0; j<n; j++)

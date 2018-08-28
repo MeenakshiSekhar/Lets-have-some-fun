@@ -9,6 +9,7 @@ struct queue
 
 struct queue* createQueue(int n)
 {
+	cout<<"create q"<<endl;
     struct queue *q = new queue();
     q->front = q->size = 0;
     q->rear = n - 1;
@@ -58,19 +59,16 @@ int front(struct queue *q)
 
 void BFS(int (*graph)[100000], int n, struct queue* q)
 {
-    
+    cout<<"hi";
     bool visited[n];
     for(int i=0; i<n; i++)
     {
     	visited[i] = false;
     }
     
-    visited[0] = true;
-    cout<<graph[0][0]<<" ";
-    int index = 0;
-    
-    push(q, graph[0][0]);
-    
+    visited[2] = true;
+    push(q, 2);
+    cout<<"check"<<endl;
     while(!isEmpty(q))
     {
         cout<<front(q)<<" ";
@@ -79,7 +77,7 @@ void BFS(int (*graph)[100000], int n, struct queue* q)
         {
             for(int j=0; j<n; j++)
             {
-                if(!visited[j])
+                if(graph[i][j] == 1 && !visited[j])
                 {
                     visited[j] = true;
                     push(q, j);

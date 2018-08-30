@@ -24,7 +24,6 @@ Input:
 6
 11
  
-
 Output:
 2
 3

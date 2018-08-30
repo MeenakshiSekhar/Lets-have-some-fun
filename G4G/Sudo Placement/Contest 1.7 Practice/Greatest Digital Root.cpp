@@ -1,4 +1,3 @@
-
 Given a number N, you need to find a divisor of N such that the Digital Root of that divisor is the 
 greatest among all other divisors of N. If more than one divisors give the same greatest Digital Root 
 then output the maximum divisor.

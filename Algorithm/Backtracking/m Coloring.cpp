@@ -1,6 +1,5 @@
 #include<iostream>
 #define V 4
-
 using namespace std;
 
 void print(int *color);

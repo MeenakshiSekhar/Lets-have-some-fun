@@ -2,6 +2,7 @@
 #define ll long long
 using namespace std;
 
+
 string power(ll n)
 {
     if((n!=0) && (n&(n-1))==0)

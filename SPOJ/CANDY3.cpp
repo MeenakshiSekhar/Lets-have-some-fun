@@ -1,5 +1,4 @@
 #include<iostream>
-
 using namespace std;
 
 int equalDivide(long long int *candy, long long int n)

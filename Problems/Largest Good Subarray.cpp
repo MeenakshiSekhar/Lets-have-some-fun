@@ -1,6 +1,5 @@
-/*You are given an array a with n
-
-integers. A subarray is any subset of consecutive elements from this array. Let us call a subarray good 
+/*You are given an array a with n integers. A subarray is any subset of consecutive elements from this array. 
+Let us call a subarray good 
 if its first element is greater than or equal to the last element.
 
 For example, if the given array is (2,5,1,6,4,7)

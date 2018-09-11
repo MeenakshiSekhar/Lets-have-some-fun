@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
 long long hotness(long long *men, long long *women, int n)
